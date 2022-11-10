@@ -1,0 +1,12 @@
+{
+  "name": "dicey",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/bot.js",
+  "scripts": {
+    "start": "node src/bot.js"
+  },
+  "keywords": [],
+  "author": "Gammarkin",
+  "license": "ISC"
+}
