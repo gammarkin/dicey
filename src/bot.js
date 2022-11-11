@@ -1,7 +1,6 @@
 require('dotenv/config');
 
-const { DISCORD_TOKEN } = process.env;
-const { EmbedBuilder } = require('discord.js');
+const { DISCORD_TOKEN, ENDPOINT } = process.env;
 const { Client, Collection, GatewayIntentBits } = require('discord.js')
 
 const skills = require('./skills');
@@ -28,7 +27,7 @@ client.on('messageCreate', async message => {
   const userTag = user.split('#')[1]
 
   if (message.content.includes('!roll') && userTag !== '2158') {
-    if (message.content.split(' ').length < 3)
+    if (message.content.split(' ').length !== 3)
       return message.reply('formatação errada! Tente !roll d20 +skill');
 
     const messageSkill = message.content.split(' ')[2].slice(0, 4).toLowerCase();
@@ -39,7 +38,7 @@ client.on('messageCreate', async message => {
       const playerMessage = message.content.toLowerCase();
 
       if (playerMessage.includes(firstFourSkillLetters)) {
-        const character = await axios.get(`http://localhost:3001/character/${userTag}`);
+        const character = await axios.get(`${ENDPOINT}/${userTag}`);
         const timesToRoll = character.data.skills[skills[skill]]
         const attToAdd = character.data.attributes[first4Skills[messageSkill]]
         const MIN_DICE = 1;
