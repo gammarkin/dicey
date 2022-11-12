@@ -3,9 +3,9 @@ require('dotenv/config');
 const { DISCORD_TOKEN } = process.env;
 const { Client, Collection, GatewayIntentBits } = require('discord.js')
 
-const rollDiceCommand = require('./events/roll');
-const showSkillsCommand = require('./events/showSkills');
-const helpCommand = require('./events/help');
+const rollDiceCommand = require('./commands/roll');
+const showSkillsCommand = require('./commands/showSkills');
+const helpCommand = require('./commands/help');
 
 const client = new Client({
   intents: [
