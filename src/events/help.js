@@ -1,3 +1,5 @@
+const helpOptions = require('../helpers/helpOptions');
+
 module.exports = (message) => {
     const { content } = message;
 
@@ -6,8 +8,7 @@ module.exports = (message) => {
             embeds: [{
                 color: 0xf54257,
                 title: 'Comandos:',
-                description: `Para ver as perícias disponíveis, digite !skills.
-Para rolar um dado, digite !roll d20 +pericia.`,
+                fields: helpOptions,
                 timestamp: new Date().toISOString(),
             }]
         });
