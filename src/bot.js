@@ -6,6 +6,7 @@ const { Client, Collection, GatewayIntentBits } = require('discord.js')
 const rollAttCommand = require('./commands/rollAttributes');
 const showSkillsCommand = require('./commands/showSkills');
 const helpCommand = require('./commands/help');
+const pureRollCommand = require('./commands/pureRoll');
 
 const client = new Client({
   intents: [
@@ -24,5 +25,7 @@ client.once('ready', () => {
 client.on('messageCreate', rollAttCommand);
 client.on('messageCreate', showSkillsCommand);
 client.on('messageCreate', helpCommand);
+client.on('messageCreate', pureRollCommand);
+
 
 client.login(DISCORD_TOKEN);
