@@ -20,6 +20,10 @@ module.exports = [
         value: 'mostra todas as armas disponíveis'
     },
     {
+        name: '!update (nome do atributo) (novo valor)',
+        value: 'atualiza o valor de um atributo'
+    },
+    {
         name: '!help',
         value: 'mostra todos os comandos disponíveis'
     },
