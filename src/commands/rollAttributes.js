@@ -1,5 +1,5 @@
-const skills = require('../helpers/skills');
-const first4Skills = require('../helpers/firstFourLetterSkills');
+const skills = require('../data/skills');
+const first4Skills = require('../data/firstFourLetterSkills');
 
 const axios = require('axios');
 
@@ -10,9 +10,9 @@ const { ENDPOINT } = process.env;
 module.exports = async (message) => {
   const [user, userTag] = getUserTag(message);
 
-  if (message.content.includes('!roll')) {
+  if (message.content.includes('!per')) {
     if (message.content.split(' ').length !== 3)
-      return message.reply('formatação errada! Tente !roll d20 +skill');
+      return message.reply('formatação errada! Tente !pericia d20 +skill');
 
     const skillToUse = message.content.split(' ')[2].slice(0, 4).toLowerCase();
     const diceType = +message.content.split(' ')[1].replace('d', '')
@@ -20,11 +20,12 @@ module.exports = async (message) => {
     for (const skill in skills) {
       const firstFourSkillLetters = skill.slice(0, 4).toLowerCase();
       const playerMessage = message.content.toLowerCase();
+      const attribute = first4Skills[skillToUse]
 
       if (playerMessage.includes(firstFourSkillLetters)) {
         const character = await axios.get(`${ENDPOINT}/${userTag}`);
         const timesToRoll = character.data.skills[skills[skill]]
-        const attToSum = character.data.attributes[first4Skills[skillToUse]]
+        const attToSum = character.data.attributes[attribute]
 
         const MIN_DICE_VALUE = 1;
         const rolls = [];
