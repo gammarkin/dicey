@@ -3,10 +3,11 @@ require('dotenv/config');
 const { DISCORD_TOKEN } = process.env;
 const { Client, Collection, GatewayIntentBits } = require('discord.js')
 
-const rollAttCommand = require('./commands/rollAttributes');
+const rollAttackCommand = require('./commands/rollAttack');
 const showSkillsCommand = require('./commands/showSkills');
-const helpCommand = require('./commands/help');
 const pureRollCommand = require('./commands/pureRoll');
+const rollAttCommand = require('./commands/rollAttributes');
+const helpCommand = require('./commands/help');
 
 const client = new Client({
   intents: [
@@ -26,6 +27,7 @@ client.on('messageCreate', rollAttCommand);
 client.on('messageCreate', showSkillsCommand);
 client.on('messageCreate', helpCommand);
 client.on('messageCreate', pureRollCommand);
+client.on('messageCreate', rollAttackCommand);
 
 
 client.login(DISCORD_TOKEN);
