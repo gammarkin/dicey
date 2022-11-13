@@ -3,7 +3,7 @@ require('dotenv/config');
 const { DISCORD_TOKEN } = process.env;
 const { Client, Collection, GatewayIntentBits } = require('discord.js')
 
-const rollDiceCommand = require('./commands/roll');
+const rollAttCommand = require('./commands/rollAttributes');
 const showSkillsCommand = require('./commands/showSkills');
 const helpCommand = require('./commands/help');
 
@@ -21,7 +21,7 @@ client.once('ready', () => {
   console.log('bot is online!');
 });
 
-client.on('messageCreate', rollDiceCommand);
+client.on('messageCreate', rollAttCommand);
 client.on('messageCreate', showSkillsCommand);
 client.on('messageCreate', helpCommand);
 

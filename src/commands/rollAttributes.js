@@ -5,12 +5,12 @@ const axios = require('axios');
 
 const getUserTag = require('../helpers/getUserTag');
 
-const { ENDPOINT } = process.env;
+const { ENDPOINT, BOT_USER_TAG } = process.env;
 
 module.exports = async (message) => {
   const [user, userTag] = getUserTag(message);
 
-  if (message.content.includes('!per')) {
+  if (message.content.includes('!per') && userTag !== BOT_USER_TAG) {
     if (message.content.split(' ').length !== 3)
       return message.reply('formatação errada! Tente !pericia d20 +skill');
 
@@ -31,9 +31,10 @@ module.exports = async (message) => {
         const rolls = [];
 
         for (let i = 0; i < timesToRoll; i++) {
-          const value = (Math.floor(Math.random() * diceType) + MIN_DICE_VALUE) + attToSum;
+          const roll = (Math.floor(Math.random() * diceType) + MIN_DICE_VALUE);
+          const value = roll + attToSum
 
-          rolls.push({ name: `roll #${i}`, value, inline: true });
+          rolls.push({ name: `roll #${i} (${roll}) `, value, inline: true });
         }
 
         return message.channel.send({

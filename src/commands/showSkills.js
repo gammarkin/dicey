@@ -1,4 +1,4 @@
-const skills = require('../helpers/skills');
+const skills = require('../data/skills');
 
 module.exports = (message) => {
   const { content } = message;

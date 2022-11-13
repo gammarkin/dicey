@@ -1,4 +1,4 @@
-const helpOptions = require('../helpers/helpOptions');
+const helpOptions = require('../data/helpOptions');
 
 module.exports = (message) => {
     const { content } = message;
