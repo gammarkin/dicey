@@ -12,6 +12,14 @@ module.exports = [
         value: 'rola uma perícia, e mostra o resultado'
     },
     {
+        name: '!attack (nome da arma)',
+        value: 'rola um ataque com a arma escolhida'
+    },
+    {
+        name: '!armas',
+        value: 'mostra todas as armas disponíveis'
+    },
+    {
         name: '!help',
         value: 'mostra todos os comandos disponíveis'
     },
