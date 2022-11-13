@@ -5,7 +5,7 @@ const { BOT_USER_TAG } = process.env;
 module.exports = async (message) => {
     const [user, userTag] = getUserTag(message);
 
-    if (message.content.includes('!roll') && userTag !== BOT_USER_TAG) {
+    if (message.content.includes('!ro') && userTag !== BOT_USER_TAG) {
         if (message.content.split(' ').length !== 3)
             return message.reply('formatação errada! Tente !roll 1d20 +(modificador)');
 

@@ -10,7 +10,7 @@ const { ENDPOINT, BOT_USER_TAG } = process.env;
 module.exports = async (message) => {
   const [user, userTag] = getUserTag(message);
 
-  if (message.content.includes('!per') && userTag !== BOT_USER_TAG) {
+  if (message.content.includes('!pe') && userTag !== BOT_USER_TAG) {
     if (message.content.split(' ').length !== 3)
       return message.reply('formatação errada! Tente !pericia d20 +skill');
 
