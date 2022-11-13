@@ -6,6 +6,7 @@ const { Client, Collection, GatewayIntentBits } = require('discord.js')
 const showWeaponsCommand = require('./commands/showWeapons');
 const rollAttackCommand = require('./commands/rollAttack');
 const showSkillsCommand = require('./commands/showSkills');
+const updateCharCommand = require('./commands/updateChar');
 const pureRollCommand = require('./commands/pureRoll');
 const rollAttCommand = require('./commands/rollAttributes');
 const helpCommand = require('./commands/help');
@@ -30,5 +31,6 @@ client.on('messageCreate', helpCommand);
 client.on('messageCreate', pureRollCommand);
 client.on('messageCreate', rollAttackCommand);
 client.on('messageCreate', showWeaponsCommand);
+client.on('messageCreate', updateCharCommand);
 
 client.login(DISCORD_TOKEN);
