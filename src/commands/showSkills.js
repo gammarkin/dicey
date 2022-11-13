@@ -3,7 +3,7 @@ const skills = require('../data/skills');
 module.exports = (message) => {
   const { content } = message;
 
-  if (content.includes('!skills')) {
+  if (content.includes('!sk')) {
     const skillsList = [];
 
     for (const skill in skills) {
