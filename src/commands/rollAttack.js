@@ -31,16 +31,17 @@ module.exports = async (message) => {
         const rolls = [];
 
         for (let i = 0; i < timesToRoll; i++) {
-            const roll = (Math.floor(Math.random() * diceSides) + MIN_DICE_VALUE);
-            const value = roll + mod;
+            const value = (Math.floor(Math.random() * diceSides) + MIN_DICE_VALUE);
 
-            rolls.push({ name: `roll #${i} (${roll}) `, value, inline: true });
+            rolls.push({ name: `roll #${i} (${value}) `, value, inline: true });
         }
+
+        const total = rolls.reduce((acc, curr) => acc + curr.value, 0) + mod;
 
         return message.channel.send({
             embeds: [{
                 color: 0xf54257,
-                title: 'Resultados:',
+                title: `Resultado Total: ${total}`,
                 description: `player: ${user} | arma: ${weapon.name} | dado: ${weapon.damageDice}`,
                 fields: rolls,
                 timestamp: new Date().toISOString(),

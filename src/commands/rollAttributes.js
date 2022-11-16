@@ -14,6 +14,8 @@ module.exports = async (message) => {
     if (message.content.split(' ').length !== 3)
       return message.reply('formatação errada! Tente !pericia d20 +skill');
 
+
+
     const skillToUse = message.content.split(' ')[2].slice(0, 4).toLowerCase();
     const diceType = +message.content.split(' ')[1].replace('d', '')
 
