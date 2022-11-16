@@ -7,8 +7,8 @@ module.exports = async (message) => {
     const [user, userTag] = getUserTag(message);
 
     if (message.content.includes('!at') && userTag !== BOT_USER_TAG) {
-        if (message.content.split(' ').length !== 2)
-            return message.reply('formatação errada! Tente !ataque (arma)');
+        if (message.content.split(' ').length < 2)
+            return message.reply('formatação errada! Tente !ataque (arma) +(modificador)');
 
         const char = await axios.get(`${ENDPOINT}/${userTag}`);
         const weapons = char.data.weapons;
@@ -18,10 +18,12 @@ module.exports = async (message) => {
 
         if (!weapon) return message.reply('não achei a arma solicitada...');
 
-        let mod = char.data.attributes.luta
+        let mod = 0;
 
-        if (weapon.type.toLowerCase().includes('distancia')) {
-            mod = char.data.attributes.pontaria
+        if (message.content.includes('+')) {
+            mod = +message.content.split(' ')[2].replace('+', '')
+
+            if (isNaN(mod)) return message.reply('o modificador deve ser um número!');
         }
 
         const timesToRoll = weapon.damageDice.split('d')[0];
