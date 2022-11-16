@@ -1,4 +1,4 @@
-const { ENDPOINT, BOT_USER_TAG } = process.env;
+const { ENDPOINT, BOT_USER_TAG, ADMIN_TAG } = process.env;
 
 const axios = require('axios');
 
@@ -8,6 +8,12 @@ module.exports = async (message) => {
     const [_user, userTag] = getUserTag(message);
 
     if (message.content.includes('!up') && userTag !== BOT_USER_TAG) {
+        if (message.content.split(' ').length <= 1)
+            return message.reply('formatação errada!');
+
+        if (userTag !== ADMIN_TAG)
+            return message.reply('você não tem permissão para usar esse comando!')
+
         const desiredChange = message.content.split(' ')[1];
         let newValue = message.content.split(' ')[2];
 
