@@ -26,6 +26,12 @@ module.exports = async (message) => {
             if (isNaN(mod)) return message.reply('o modificador deve ser um número!');
         }
 
+        if (message.content.includes('-')) {
+            mod = -Number(message.content.split(' ')[2].replace('-', ''));
+
+            if (isNaN(mod)) return message.reply('o modificador deve ser um número!');
+        }
+
         const timesToRoll = weapon.damageDice.split('d')[0];
         const diceSides = weapon.damageDice.split('d')[1];
 
@@ -39,6 +45,14 @@ module.exports = async (message) => {
         }
 
         const total = rolls.reduce((acc, curr) => acc + curr.value, 0) + mod;
+
+
+        if (message.content.includes('*')) {
+            mod = Number(message.content.split(' ')[2].replace('*', ''));
+            mod = (mod - 1) * total;
+
+            if (isNaN(mod)) return message.reply('o modificador deve ser um número!');
+        }
 
         return message.channel.send({
             embeds: [{
