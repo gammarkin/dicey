@@ -2,6 +2,7 @@ const skills = require('../data/skills');
 const first4Skills = require('../data/firstFourLetterSkills');
 
 const axios = require('axios');
+const randomInteger = require('random-int');
 
 const getUserTag = require('../helpers/getUserTag');
 
@@ -37,7 +38,7 @@ module.exports = async (message) => {
         let biggestRoll = 0;
 
         for (let i = 0; i < timesToRoll; i++) {
-          const value = (Math.floor(Math.random() * diceType) + MIN_DICE_VALUE);
+          const value = randomInteger(MIN_DICE_VALUE, sides);
 
           rolls.push({ name: `roll #${i}`, value, inline: true });
 
