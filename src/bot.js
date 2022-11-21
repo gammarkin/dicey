@@ -10,6 +10,7 @@ const updateCharCommand = require('./commands/updateChar');
 const pureRollCommand = require('./commands/pureRoll');
 const rollAttCommand = require('./commands/rollAttributes');
 const helpCommand = require('./commands/help');
+const seedCommand = require('./commands/seed');
 
 const client = new Client({
   intents: [
@@ -32,5 +33,6 @@ client.on('messageCreate', pureRollCommand);
 client.on('messageCreate', rollAttackCommand);
 client.on('messageCreate', showWeaponsCommand);
 client.on('messageCreate', updateCharCommand);
+client.on('messageCreate', seedCommand);
 
 client.login(DISCORD_TOKEN);
