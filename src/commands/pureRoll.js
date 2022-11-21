@@ -14,6 +14,7 @@ module.exports = async (message) => {
         const sides = +diceAndSide[1]
 
         let mod = 0;
+        let biggestRoll = 0;
 
         if (message.content.includes('+')) {
             mod = +message.content.split(' ')[2].replace('+', '')
@@ -25,16 +26,19 @@ module.exports = async (message) => {
         const rolls = [];
 
         for (let i = 0; i < timesToRoll; i++) {
-            const roll = (Math.floor(Math.random() * sides) + MIN_DICE_VALUE);
-            const value = roll + mod
+            const value = (Math.floor(Math.random() * sides) + MIN_DICE_VALUE);
 
-            rolls.push({ name: `roll #${i} (${roll}) `, value, inline: true });
+            rolls.push({ name: `roll #${i}`, value, inline: true });
+
+            if (value > biggestRoll) biggestRoll = value;
         }
+
+        const total = rolls.reduce((acc, curr) => acc + curr.value, 0);
 
         return message.channel.send({
             embeds: [{
                 color: 0xf54257,
-                title: 'Resultados:',
+                title: `Maior dado: ${biggestRoll + mod} | Total: ${total + mod}`,
                 description: `player: ${user} | dado: ${message.content.split(' ')[1]} | modificador: ${mod}`,
                 fields: rolls,
                 timestamp: new Date().toISOString(),
