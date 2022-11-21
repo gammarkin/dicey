@@ -14,8 +14,6 @@ module.exports = async (message) => {
     if (message.content.split(' ').length !== 3)
       return message.reply('formatação errada! Tente !pericia d20 +skill');
 
-
-
     const skillToUse = message.content.split(' ')[2].slice(0, 4).toLowerCase();
     const diceType = +message.content.split(' ')[1].replace('d', '')
 
@@ -26,23 +24,32 @@ module.exports = async (message) => {
 
       if (playerMessage.includes(firstFourSkillLetters)) {
         const character = await axios.get(`${ENDPOINT}/${userTag}`);
-        const timesToRoll = character.data.skills[skills[skill]]
+        let timesToRoll = character.data.skills[skills[skill]]
         const attToSum = character.data.attributes[attribute]
+
+        if (timesToRoll === 0) {
+          timesToRoll = 2
+        }
 
         const MIN_DICE_VALUE = 1;
         const rolls = [];
 
-        for (let i = 0; i < timesToRoll; i++) {
-          const roll = (Math.floor(Math.random() * diceType) + MIN_DICE_VALUE);
-          const value = roll + attToSum
+        let biggestRoll = 0;
 
-          rolls.push({ name: `roll #${i} (${roll}) `, value, inline: true });
+        for (let i = 0; i < timesToRoll; i++) {
+          const value = (Math.floor(Math.random() * diceType) + MIN_DICE_VALUE);
+
+          rolls.push({ name: `roll #${i}`, value, inline: true });
+
+          if (value > biggestRoll) {
+            biggestRoll = value;
+          }
         }
 
         return message.channel.send({
           embeds: [{
             color: 0xf54257,
-            title: 'Resultados:',
+            title: `Maior dado: ${biggestRoll + attToSum} (${biggestRoll})`,
             description: `player: ${user} | pericia: ${skill} | dado: d${diceType}`,
             fields: rolls,
             timestamp: new Date().toISOString(),
