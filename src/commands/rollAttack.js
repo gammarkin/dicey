@@ -3,13 +3,12 @@ const { ENDPOINT, BOT_USER_TAG } = process.env;
 const getUserTag = require('../helpers/getUserTag');
 
 const axios = require('axios');
-const randomInteger = require('random-int');
-
+const randomInteger = require('random-integer')
 
 module.exports = async (message) => {
     const [user, userTag] = getUserTag(message);
 
-    if (message.content.includes('!at') && userTag !== BOT_USER_TAG) {
+    if (message.content.includes('!a') && userTag !== BOT_USER_TAG) {
         if (message.content.split(' ').length < 2)
             return message.reply('formatação errada! Tente !ataque (arma) +(modificador)');
 
@@ -42,17 +41,17 @@ module.exports = async (message) => {
         const rolls = [];
 
         for (let i = 0; i < timesToRoll; i++) {
-            const value = randomInteger(MIN_DICE_VALUE, sides);
+            const value = randomInteger(MIN_DICE_VALUE, diceSides);
 
             rolls.push({ name: `roll #${i} (${value}) `, value, inline: true });
         }
 
-        const total = rolls.reduce((acc, curr) => acc + curr.value, 0) + mod;
+        let total = rolls.reduce((acc, curr) => acc + curr.value, 0) + mod;
 
 
         if (message.content.includes('*')) {
             mod = Number(message.content.split(' ')[2].replace('*', ''));
-            mod = (mod - 1) * total;
+            total *= mod;
 
             if (isNaN(mod)) return message.reply('o modificador deve ser um número!');
         }

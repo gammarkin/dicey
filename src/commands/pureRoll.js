@@ -1,12 +1,12 @@
 const getUserTag = require('../helpers/getUserTag');
-const randomInteger = require('random-int');
+const randomInteger = require('random-integer')
 
 const { BOT_USER_TAG } = process.env;
 
 module.exports = async (message) => {
   const [user, userTag] = getUserTag(message);
 
-  if (message.content.includes('!ro') && userTag !== BOT_USER_TAG) {
+  if (message.content.includes('!r') && userTag !== BOT_USER_TAG) {
     if (message.content.split(' ').length < 2)
       return message.reply('formatação errada! Tente !roll 1d20 +(modificador)');
 
@@ -27,7 +27,7 @@ module.exports = async (message) => {
     const rolls = [];
 
     for (let i = 0; i < timesToRoll; i++) {
-      const value = randomInteger(MIN_DICE_VALUE, sides);
+      const value = randomInteger(MIN_DICE_VALUE, sides + MIN_DICE_VALUE);
 
       rolls.push({ name: `roll #${i}`, value, inline: true });
 
