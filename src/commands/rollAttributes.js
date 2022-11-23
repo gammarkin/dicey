@@ -42,7 +42,7 @@ module.exports = async (message) => {
           for (let i = 0; i < timesToRoll; i++) {
             const value = randomInteger(MIN_DICE_VALUE, diceType);
 
-            rolls.push({ name: `roll #${i}`, value, inline: true });
+            rolls.push({ name: `roll #${i + 1}`, value, inline: true });
 
             if (value > biggestRoll) {
               biggestRoll = value;
@@ -101,7 +101,7 @@ module.exports = async (message) => {
           for (let i = 0; i < timesToRoll; i++) {
             const value = randomInteger(MIN_DICE_VALUE, diceType);
 
-            rolls.push({ name: `roll #${i}`, value, inline: true });
+            rolls.push({ name: `roll #${i + 1}`, value, inline: true });
 
             if (value > biggestRoll) {
               biggestRoll = value;
