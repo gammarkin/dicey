@@ -2,4 +2,4 @@
 ---
 ### *!help* command to see all the available commands!
 
-_Uses (Dicey-backend)[https://github.com/Gammarkin/dicey-backend]_
+Uses <a href="https://github.com/gammarkin/dicey-backend">Dicey-backend</a>!
