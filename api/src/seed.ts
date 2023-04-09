@@ -36,7 +36,7 @@ export default [
 			{value: 0, name: 'reflexos'},
 			{value: 0, name: 'religião'},
 			{value: 0, name: 'sobrevivência'},
-			{value: 0, name: 'tatica'},
+			{value: 0, name: 'tática'},
 			{value: 0, name: 'tecnologia'},
 			{value: 0, name: 'vontade'},
 		],
