@@ -1,16 +1,15 @@
-const skills = require('../data/skills');
+const skills = require('../data/skillsAttribute');
 
 module.exports = (message) => {
   const { content } = message;
 
   if (content.includes('!sk')) {
-    const skillsList = [];
-
-    for (const skill in skills) {
-      const firstFourSkillLetters = skill.slice(0, 4).toLowerCase();
-
-      skillsList.push({ name: firstFourSkillLetters, value: skill, inline: true });
-    }
+    const skillsList = skills.map((skill) => {
+      return {
+        nome: skill.name,
+        atributo: skill.attribute,
+      }
+    });
 
     return message.channel.send({
       embeds: [{
