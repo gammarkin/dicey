@@ -4,10 +4,10 @@ module.exports = (message) => {
   const { content } = message;
 
   if (content.includes('!sk')) {
-    const skillsList = skills.map((skill) => {
+    const skillsList = skills.map(({ name, attribute }) => {
       return {
-        nome: skill.name,
-        atributo: skill.attribute,
+        name,
+        value: attribute,
       }
     });
 
