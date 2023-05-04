@@ -49,6 +49,7 @@ export default [
 				damageType: 'perfurante',
 			},
 		],
+		dmTag: '8831',
 	},
 	{
 		id: 2,
@@ -100,6 +101,7 @@ export default [
 				damageType: 'cortante',
 			},
 		],
+		dmTag: '8831',
 	},
 	{
 		id: 3,
@@ -151,6 +153,7 @@ export default [
 				damageType: 'cortante',
 			},
 		],
+		dmTag: '8831',
 	},
 	{
 		id: 4,
@@ -202,6 +205,7 @@ export default [
 				damageType: 'perfurante',
 			},
 		],
+		dmTag: '8831',
 	},
 	{
 		id: 5,
@@ -267,6 +271,7 @@ export default [
 				damageType: 'balistico',
 			},
 		],
+		dmTag: '8831',
 	},
 	{
 		id: 6,
@@ -318,6 +323,7 @@ export default [
 				damageType: 'cortante',
 			},
 		],
+		dmTag: '8831',
 	},
 	{
 		id: 7,
@@ -325,19 +331,19 @@ export default [
 		characterName: 'test',
 		skills: [
 			{value: 0, name: 'agilidade'},
-			{value: 0, name: 'força'},
-			{value: 0, name: 'presença'},
-			{value: 0, name: 'vigor'},
-			{value: 0, name: 'inteligência'},
+			{value: 1, name: 'força'},
+			{value: 2, name: 'presença'},
+			{value: 4, name: 'vigor'},
+			{value: 3, name: 'inteligência'},
 		],
 		attributes: [
-			{value: 0, name: 'acrobacia'},
+			{value: 2, name: 'acrobacia'},
 			{value: 0, name: 'adestramento'},
 			{value: 0, name: 'artes'},
 			{value: 0, name: 'atletismo'},
 			{value: 0, name: 'atualidades'},
 			{value: 0, name: 'ciências'},
-			{value: 0, name: 'crime'},
+			{value: 5, name: 'crime'},
 			{value: 0, name: 'diplomacia'},
 			{value: 0, name: 'enganação'},
 			{value: 0, name: 'fortitude'},
@@ -369,5 +375,6 @@ export default [
 				damageType: 'perfurante',
 			},
 		],
+		dmTag: '8831',
 	},
 ];

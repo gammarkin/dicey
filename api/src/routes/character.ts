@@ -50,4 +50,6 @@ router.delete(
 	(req, res) => charController.destroy(req, res)
 );
 
+router.delete('/', (req, res) => charController.destroyAndSeed(req, res));
+
 export default router;

@@ -17,33 +17,15 @@ const CharMongooseSchema = new Schema<IChar>(
 			required: true,
 		},
 		skills: {
-			type: [
-				{
-					name: String,
-					value: Number,
-				},
-			],
+			type: [],
 			required: true,
 		},
 		attributes: {
-			type: [
-				{
-					name: String,
-					value: Number,
-				},
-			],
+			type: [],
 			required: true,
 		},
 		weapons: {
-			type: [
-				{
-					name: String,
-					critical: String,
-					damageDice: String,
-					damageType: String,
-					weapon_type: String,
-				},
-			],
+			type: [],
 			required: true,
 		},
 		dmTag: {
