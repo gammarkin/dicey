@@ -12,7 +12,7 @@ module.exports = async (message) => {
         if (message.content.split(' ').length < 2)
             return message.reply('formatação errada! Tente !ataque (arma) +(modificador)');
 
-        const char = await axios.get(`${ENDPOINT}/${userTag}`);
+        const char = (await axios.get(`${ENDPOINT}/${userTag}`)).data;
         const weapons = char.weapons;
         const userWeapon = message.content.split(' ')[1];
 

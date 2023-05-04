@@ -1,4 +1,4 @@
-const skills = require('../data/skillsAttribute');
+const skills = require('../data/skillAttributes');
 
 module.exports = (message) => {
   const { content } = message;
