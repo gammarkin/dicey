@@ -22,16 +22,18 @@ module.exports = async (message) => {
       return message.reply('formatação errada! Tente !pericia (pericia)');
 
     const userSkill = message.content.split(' ')[1].slice(0, 4).toLowerCase();
-    const skill = skillNames.find(skill => skill.code === userSkill).name;
-    const attribute = skillAttrs.find(attr => attr.name === skillToUse).attribute;
+    const skill = skillNames.find(skill => skill.code.includes(userSkill)).name;
+    const attribute = skillAttrs.find(attr => attr.name === skill).attribute;
 
-    const character = await axios.get(`${ENDPOINT}/${userTag}`);
-    const attToSum = character.attributes.find(charAttr => charAttr.name === attribute).value;
+    const character = (await axios.get(`${ENDPOINT}/${userTag}`)).data;
+    const attToSum = character.attributes.find(charAttr => charAttr.name.includes(skill)).value;
 
-    let timesToRoll = character.skills.find(charSkill => charSkill.name === skill).value;
+    let timesToRoll = character.skills.find(charSkill => charSkill.name.includes(attribute)).value;
     let biggestRoll = 0;
     let mod = 0;
+    let negativeRoll = 0;
     let NEGATIVE_ROLL_MSG = '';
+    let diceSize = 'Maior';
 
     if (messageLength === 3) {
       mod = Number(message.content.split(' ')[2]);
@@ -40,8 +42,15 @@ module.exports = async (message) => {
 
     const rolls = [];
 
+    if (timesToRoll === 0) {
+      NEGATIVE_ROLL_MSG = ' (negativo)';
+
+      timesToRoll = NEGATIVE_ROLL_QTY
+    }
+
     for (let i = 0; i < timesToRoll; i++) {
-      const value = randomInteger(MIN_DICE_VALUE, DICE_SIDES) + attToSum + mod;
+      const roll = randomInteger(MIN_DICE_VALUE, DICE_SIDES);
+      const value = `${roll + attToSum + mod} (${roll})`
 
       rolls.push({ name: `roll #${i + 1}`, value, inline: true });
 
@@ -50,19 +59,18 @@ module.exports = async (message) => {
       }
     }
 
-    if (timesToRoll === 0) {
-      timesToRoll = NEGATIVE_ROLL_QTY;
-      NEGATIVE_ROLL_MSG = ' (negativo)';
-
-      biggestRoll = rolls.reduce((min, curr) => {
+    if (NEGATIVE_ROLL_MSG) {
+      negativeRoll = rolls.reduce((min, curr) => {
         return curr.value < min ? curr.value : min;
       }, rolls[0].value);
+
+      diceSize = 'Menor'
     }
 
     return message.channel.send({
       embeds: [{
         color: 0xf54257,
-        title: `Maior dado: ${biggestRoll} ${NEGATIVE_ROLL_MSG}`,
+        title: `${diceSize} dado: ${negativeRoll || biggestRoll} ${NEGATIVE_ROLL_MSG}`,
         description: `player: ${user} | pericia: ${skill} | dado: ${timesToRoll}d${DICE_SIDES}`,
         fields: rolls,
         timestamp: new Date().toISOString(),
