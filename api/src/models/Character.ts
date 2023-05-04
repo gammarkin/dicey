@@ -46,6 +46,10 @@ const CharMongooseSchema = new Schema<IChar>(
 			],
 			required: true,
 		},
+		dmTag: {
+			type: String,
+			required: false,
+		},
 	},
 	{versionKey: false}
 );

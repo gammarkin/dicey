@@ -5,4 +5,5 @@ export default interface IChar {
 	skills: [];
 	attributes: [];
 	weapons: [];
+	dmTag?: string;
 }

@@ -1,30 +1,4 @@
-export default interface IAttribute {
-	acrobacia: number;
-	adestramento: number;
-	artes: number;
-	atletismo: number;
-	atualidades: number;
-	ciencias: number;
-	crime: number;
-	diplomacia: number;
-	enganacao: number;
-	fortitude: number;
-	furtividade: number;
-	iniciativa: number;
-	intimidacao: number;
-	intuicao: number;
-	investigacao: number;
-	luta: number;
-	medicina: number;
-	ocultismo: number;
-	percepcao: number;
-	pilotagem: number;
-	pontaria: number;
-	profissao: number;
-	reflexos: number;
-	religiao: number;
-	sobrevivencia: number;
-	tatica: number;
-	tecnologia: number;
-	vontade: number;
+export default interface ISkills {
+	name: string;
+	value: number;
 }
