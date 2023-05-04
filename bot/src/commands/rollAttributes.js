@@ -67,7 +67,7 @@ module.exports = async (message) => {
         fields: rolls,
         timestamp: new Date().toISOString(),
         footer: {
-          text: `foi adicionado ${attToSum + mod} de ${skill} ao seu dado (mod ${mod}))`,
+          text: `foi adicionado ${attToSum + mod} de ${skill} ao seu dado (mod ${mod})`,
         },
       }]
     });
