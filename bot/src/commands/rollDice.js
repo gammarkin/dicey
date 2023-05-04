@@ -28,14 +28,15 @@ module.exports = async (message) => {
     const rolls = [];
 
     for (let i = 0; i < numberOfRolls; i++) {
-      const value = randomInteger(MIN_DICE_VALUE, sides + MIN_DICE_VALUE) + mod;
+      const roll = randomInteger(MIN_DICE_VALUE, sides + MIN_DICE_VALUE);
+      const value = `${roll + mod} (${roll})`
 
-      rolls.push({ name: `roll #${i}`, value, inline: true });
+      rolls.push({ name: `roll #${i}`, value, inline: true, roll });
 
       if (value > biggestRoll) biggestRoll = value;
     }
 
-    const total = rolls.reduce((acc, curr) => acc + curr.value, 0);
+    const total = rolls.reduce((acc, curr) => acc + curr.roll, 0);
 
     return message.channel.send({
       embeds: [{
