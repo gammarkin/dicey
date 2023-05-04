@@ -43,7 +43,7 @@ export default [
 		weapons: [
 			{
 				name: 'punhal',
-				type: 'corpo a corpo',
+				weapon_type: 'corpo a corpo',
 				critical: '19',
 				damageDice: '1d4',
 				damageType: 'perfurante',
@@ -94,7 +94,7 @@ export default [
 		weapons: [
 			{
 				name: 'faca',
-				type: 'corpo a corpo',
+				weapon_type: 'corpo a corpo',
 				critical: '19',
 				damageDice: '1d4',
 				damageType: 'cortante',
@@ -145,7 +145,7 @@ export default [
 		weapons: [
 			{
 				name: 'faca',
-				type: 'corpo a corpo',
+				weapon_type: 'corpo a corpo',
 				critical: '19',
 				damageDice: '1d4',
 				damageType: 'cortante',
@@ -196,7 +196,7 @@ export default [
 		weapons: [
 			{
 				name: 'punhal',
-				type: 'corpo a corpo',
+				weapon_type: 'corpo a corpo',
 				critical: '19',
 				damageDice: '1d4',
 				damageType: 'perfurante',
@@ -247,21 +247,21 @@ export default [
 		weapons: [
 			{
 				name: 'punhal',
-				type: 'corpo a corpo',
+				weapon_type: 'corpo a corpo',
 				critical: '19',
 				damageDice: '1d4',
 				damageType: 'perfurante',
 			},
 			{
 				name: 'revolver',
-				type: 'distancia',
+				weapon_type: 'distancia',
 				critical: '19x3',
 				damageDice: '2d6',
 				damageType: 'balistico',
 			},
 			{
 				name: 'fuzil de caça',
-				type: 'distancia',
+				weapon_type: 'distancia',
 				critical: '19x3',
 				damageDice: '2d8',
 				damageType: 'balistico',
@@ -312,7 +312,7 @@ export default [
 		weapons: [
 			{
 				name: 'faca',
-				type: 'corpo a corpo',
+				weapon_type: 'corpo a corpo',
 				critical: '19',
 				damageDice: '1d4',
 				damageType: 'cortante',
@@ -363,7 +363,7 @@ export default [
 		weapons: [
 			{
 				name: 'punhal',
-				type: 'corpo a corpo',
+				weapon_type: 'corpo a corpo',
 				critical: '19',
 				damageDice: '1d4',
 				damageType: 'perfurante',
