@@ -3,5 +3,5 @@ export default interface IWeapon {
 	type: string;
 	critical: string;
 	damageDice: string;
-	dammageType: string;
+	damageType: string;
 }
