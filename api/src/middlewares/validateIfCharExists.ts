@@ -1,9 +1,9 @@
 import {Request, Response, NextFunction} from 'express';
+import {CharServiceInterface} from '../interfaces/IService';
 import IChar from '../interfaces/IChar';
-import IService from '../interfaces/IService';
 
 export default class ValidateIfCharResists {
-	constructor(private _char: IService<IChar>) {}
+	constructor(private _char: CharServiceInterface<IChar>) {}
 
 	public async validateIfCharacterExists(
 		req: Request,

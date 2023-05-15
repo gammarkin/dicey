@@ -1,4 +1,4 @@
-import IService from '../interfaces/IService';
+import {IService} from '../interfaces/IService';
 import ICharacter from '../interfaces/IChar';
 import IModel from '../interfaces/IModel';
 import seed from '../seed';
