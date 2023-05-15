@@ -1,12 +1,12 @@
 import {Request, Response} from 'express';
 
 import ICharacter from '../interfaces/IChar';
-import IService from '../interfaces/IService';
+import {CharServiceInterface} from '../interfaces/IService';
 
 const OBJECT_NOT_FOUND = 'Object not found';
 
 export default class CharController {
-	constructor(private _service: IService<ICharacter>) {}
+	constructor(private _service: CharServiceInterface<ICharacter>) {}
 
 	public async create(req: Request, res: Response<ICharacter>) {
 		const results = await this._service.create(req.body);
