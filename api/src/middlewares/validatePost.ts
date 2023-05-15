@@ -1,4 +1,5 @@
 import {Request, Response, NextFunction} from 'express';
+import IWeapon from '../interfaces/IWeapon';
 
 export default class ValidatePost {
 	static validateId(req: Request, res: Response, next: NextFunction) {
@@ -56,12 +57,12 @@ export default class ValidatePost {
 			return res.status(400).json({message: 'Key skills is required'});
 		}
 
-		if (typeof skills !== 'object' || Array.isArray(skills)) {
-			return res.status(400).json({message: 'Key skills must be an object'});
+		if (!Array.isArray(skills)) {
+			return res.status(400).json({message: 'Key skills must be an array'});
 		}
 
-		if (Object.keys(skills).length !== 5) {
-			return res.status(400).json({message: 'Key skills must have 5 keys'});
+		if (skills.length !== 5) {
+			return res.status(400).json({message: 'There are only five skills'});
 		}
 
 		next();
@@ -74,13 +75,11 @@ export default class ValidatePost {
 			return res.status(400).json({message: 'Key attributes is required'});
 		}
 
-		if (typeof attributes !== 'object' || Array.isArray(attributes)) {
-			return res
-				.status(400)
-				.json({message: 'Key attributes must be an object'});
+		if (!Array.isArray(attributes)) {
+			return res.status(400).json({message: 'Key attributes must be an array'});
 		}
 
-		if (Object.keys(attributes).length !== 28) {
+		if (attributes.length !== 28) {
 			return res.status(400).json({
 				message: 'Key attributes must have 27 keys',
 			});
@@ -93,16 +92,18 @@ export default class ValidatePost {
 		const weapons = req.body.weapons;
 
 		if (!weapons || !Array.isArray(weapons)) {
-			return res.status(400).json({message: 'Key weapons must be an array'});
+			return res
+				.status(400)
+				.json({message: 'Key weapons must exist and should be an array'});
 		}
 
 		if (weapons.length === 0) {
 			return res
 				.status(400)
-				.json({message: 'Key weapons must have at least 1 weapon'});
+				.json({message: 'weapons must have at least 1 weapon'});
 		}
 
-		weapons.forEach((weapon: any) => {
+		weapons.forEach((weapon: IWeapon) => {
 			if (typeof weapon !== 'object' || Array.isArray(weapon)) {
 				return res
 					.status(400)
