@@ -10,5 +10,7 @@ app.use(cors());
 
 app.use('/', routes.Main);
 app.use('/character', routes.Character);
+app.use('/user', routes.User);
+app.use('/inventory', routes.Inventory);
 
 export default app;
