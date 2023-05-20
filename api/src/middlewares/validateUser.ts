@@ -15,11 +15,11 @@ export default class ValidatePost {
 
 	static validatePass(req: Request, res: Response, next: NextFunction) {
 		const {
-			body: {password},
+			body: {code},
 		} = req;
 
-		if (!password) {
-			return res.status(400).json({message: 'password is required'});
+		if (!code) {
+			return res.status(400).json({message: 'code is required'});
 		}
 
 		next();

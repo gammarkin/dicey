@@ -1,6 +1,7 @@
 import IModel from '../interfaces/IModel';
 import {IService} from '../interfaces/IService';
 import IUser from '../interfaces/IUser';
+import {hash} from 'bcrypt';
 
 class InventoryService implements IService<IUser> {
 	private _inventory: IModel<IUser>;
@@ -9,7 +10,9 @@ class InventoryService implements IService<IUser> {
 		this._inventory = model;
 	}
 
-	public async create(item: IUser | IUser[]): Promise<IUser> {
+	public async create(item: IUser): Promise<IUser> {
+		item.code = await hash(item.code, 10);
+
 		return this._inventory.create(item);
 	}
 
