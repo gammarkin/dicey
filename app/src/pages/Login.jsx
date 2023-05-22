@@ -16,7 +16,9 @@ export default function Login() {
 
 		const data = await login(userTag, password);
 
-		return data ? navigate(`/char/${data.data.tag}`) : setNotFound(true);
+		return data.data.tag
+			? navigate(`/char/${data.data.tag}`)
+			: setNotFound(true);
 	};
 
 	return (

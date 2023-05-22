@@ -4,10 +4,6 @@ import {model as mongooseCreateModel, Schema} from 'mongoose';
 
 const userMongooseSchema = new Schema<IUser>(
 	{
-		name: {
-			type: String,
-			required: true,
-		},
 		tag: {
 			type: String,
 			required: true,
