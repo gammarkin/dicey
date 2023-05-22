@@ -12,5 +12,6 @@ app.use('/', routes.Main);
 app.use('/character', routes.Character);
 app.use('/user', routes.User);
 app.use('/inventory', routes.Inventory);
+app.use('/login', routes.Login);
 
 export default app;

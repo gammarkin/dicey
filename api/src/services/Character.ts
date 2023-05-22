@@ -29,18 +29,18 @@ class CharacterService implements IService<ICharacter> {
 	}
 
 	public async findByPlayerTag(playerTag: string): Promise<ICharacter | null> {
-		return this._character.readOne(playerTag);
+		return this._character.readOne({playerTag});
 	}
 
 	public async updateOne(
 		playerTag: string,
 		character: ICharacter
 	): Promise<ICharacter | null> {
-		return this._character.update(playerTag, character);
+		return this._character.update({playerTag}, character);
 	}
 
 	public async destroy(playerTag: string): Promise<void> {
-		await this._character.delete(playerTag);
+		await this._character.delete({playerTag});
 	}
 
 	public async destroyAndSeed(): Promise<ICharacter[]> {

@@ -23,11 +23,11 @@ class InventoryService implements IService<InventoryInterface> {
 		name: string,
 		item: InventoryInterface
 	): Promise<InventoryInterface | null> {
-		return this._inventory.update(name, item);
+		return this._inventory.update({name}, item);
 	}
 
 	public async destroy(name: string): Promise<void> {
-		await this._inventory.delete(name);
+		await this._inventory.delete({name});
 	}
 }
 

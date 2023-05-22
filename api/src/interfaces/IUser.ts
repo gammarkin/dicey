@@ -1,4 +1,4 @@
-export default interface Inventory {
+export default interface IUser {
 	name: string;
 	tag: string;
 	image?: string;

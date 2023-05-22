@@ -12,17 +12,17 @@ abstract class MongoModel<T> implements IModel<T> {
 		return this._model.create({...obj});
 	}
 
-	public async readOne(playerTag: string): Promise<T | null> {
-		return this._model.findOne({playerTag});
+	public async readOne(item: {}): Promise<T | null> {
+		return this._model.findOne(item as {});
 	}
 
 	public async read(): Promise<T[]> {
 		return this._model.find({});
 	}
 
-	public async update(playerTag: string, obj: Partial<T>): Promise<T | null> {
+	public async update(item: {}, obj: Partial<T>): Promise<T | null> {
 		return this._model.findOneAndUpdate(
-			{playerTag},
+			item as {},
 			{...obj} as UpdateQuery<T>,
 			{
 				new: true,
@@ -30,8 +30,8 @@ abstract class MongoModel<T> implements IModel<T> {
 		);
 	}
 
-	public async delete(playerTag: string): Promise<void> {
-		await this._model.deleteOne({playerTag});
+	public async delete(item: {}): Promise<void> {
+		await this._model.deleteOne(item as {});
 	}
 
 	public async createMany(obj: T[]): Promise<T[]> {

@@ -14,6 +14,8 @@ const charController = new CharacterController(charService);
 
 router.get('/', (req, res) => charController.findAll(req, res));
 
+router.get('/:tag', (req, res) => charController.findOne(req, res));
+
 router.post(
 	'/',
 	ValidateUser.validateTag,
