@@ -7,17 +7,17 @@ export default interface IChar {
 	weapons: [];
 	attacks?: [];
 	habilities?: [];
+	dmTag?: string;
 	origin?: string;
 	characterClass?: string;
 	nex?: string;
 	movement?: string;
-	dmTag?: string;
-	pv?: number;
-	pe?: number;
-	pvMax?: number;
-	peMax?: number;
-	defense?: number;
-	sanity?: number;
-	protection?: number;
-	resistance?: number;
+	pv?: string;
+	pe?: string;
+	pvMax?: string;
+	peMax?: string;
+	defense?: string;
+	sanity?: string;
+	protection?: string;
+	resistance?: string;
 }

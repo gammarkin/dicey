@@ -33,35 +33,35 @@ const CharMongooseSchema = new Schema<IChar>(
 			required: false,
 		},
 		pv: {
-			type: Number,
+			type: String,
 			required: false,
 		},
 		pe: {
-			type: Number,
+			type: String,
 			required: false,
 		},
 		pvMax: {
-			type: Number,
+			type: String,
 			required: false,
 		},
 		peMax: {
-			type: Number,
+			type: String,
 			required: false,
 		},
 		defense: {
-			type: Number,
+			type: String,
 			required: false,
 		},
 		sanity: {
-			type: Number,
+			type: String,
 			required: false,
 		},
 		protection: {
-			type: Number,
+			type: String,
 			required: false,
 		},
 		resistance: {
-			type: Number,
+			type: String,
 			required: false,
 		},
 		skills: {
