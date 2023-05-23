@@ -4,10 +4,6 @@ import IChar from '../interfaces/IChar';
 
 const CharMongooseSchema = new Schema<IChar>(
 	{
-		id: {
-			type: Number,
-			required: true,
-		},
 		playerTag: {
 			type: String,
 			required: true,
@@ -15,6 +11,58 @@ const CharMongooseSchema = new Schema<IChar>(
 		characterName: {
 			type: String,
 			required: true,
+		},
+		dmTag: {
+			type: String,
+			required: false,
+		},
+		origin: {
+			type: String,
+			required: false,
+		},
+		characterClass: {
+			type: String,
+			required: false,
+		},
+		nex: {
+			type: String,
+			required: false,
+		},
+		movement: {
+			type: String,
+			required: false,
+		},
+		pv: {
+			type: Number,
+			required: false,
+		},
+		pe: {
+			type: Number,
+			required: false,
+		},
+		pvMax: {
+			type: Number,
+			required: false,
+		},
+		peMax: {
+			type: Number,
+			required: false,
+		},
+		defense: {
+			type: Number,
+			required: false,
+		},
+		sanity: {
+			type: Number,
+			required: false,
+		},
+		protection: {
+			type: Number,
+			required: false,
+		},
+		resistance: {
+			type: Number,
+			required: false,
 		},
 		skills: {
 			type: [],
@@ -28,8 +76,12 @@ const CharMongooseSchema = new Schema<IChar>(
 			type: [],
 			required: true,
 		},
-		dmTag: {
-			type: String,
+		attacks: {
+			type: [],
+			required: false,
+		},
+		habilities: {
+			type: [],
 			required: false,
 		},
 	},
