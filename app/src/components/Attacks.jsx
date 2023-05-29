@@ -1,50 +1,30 @@
-import {useState} from 'react';
-import PropTypes from 'prop-types';
+import {number} from 'prop-types';
+import weapons from '../utils/data/weapons';
 
-export default function Attacks({id}) {
-	const [attack, setAttack] = useState({});
-
-	const saveAttacks = () => {
-		if (!attack.value) {
-			return;
-		}
-
-		const attacks = JSON.parse(localStorage.getItem('attacks')) || [];
-		const attackFromStorage = attacks.find((attack) => attack.id === id);
-
-		if (attackFromStorage) {
-			attacks.map((atk) => {
-				if (atk.id === id) {
-					return (atk.value = attack.value);
-				}
-			});
-
-			return localStorage.setItem('attacks', JSON.stringify(attacks));
-		}
-
-		attacks.push(attack);
-
-		return localStorage.setItem('attacks', JSON.stringify(attacks));
-	};
-
+export default function Attacks({setWeapons}) {
 	return (
 		<section>
-			<label htmlFor="attackName">Ataques</label>
-			<label htmlFor="Teste">Teste</label>
-			<label htmlFor="Dano">Dano</label>
-			<label htmlFor="Tipo de arma">Critico/Alcance/Especial</label>
+			<p>Ataques - Teste - Dano - Crítico/Alcance/Especial</p>
 
-			<input
-				type="text"
-				id="attack"
-				value={attack.value}
-				onChange={({target: {value}}) => setAttack({value, id})}
-				onBlur={saveAttacks}
-			/>
+			<select
+				id="attackName"
+				name="attackName"
+				onChange={({target: {value}}) =>
+					setWeapons([weapons.find((weapon) => weapon.name === value)])
+				}
+			>
+				<option value="">Selecione sua arma</option>
+				{weapons.map((weapon) => (
+					<option key={weapon.name} value={weapon.name}>
+						{`${weapon.name}  -  ${weapon.weapon_type}  -  ${weapon.damageDice} - 
+						${weapon.critical}/${weapon.damageType}/-`}
+					</option>
+				))}
+			</select>
 		</section>
 	);
 }
 
 Attacks.propTypes = {
-	id: PropTypes.number.isRequired,
-};
+	id: number,
+}.isRequired;
