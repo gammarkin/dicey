@@ -1,6 +1,5 @@
 export default [
 	{
-		id: 1,
 		playerTag: '7973',
 		characterName: 'player1',
 		skills: [
@@ -66,7 +65,6 @@ export default [
 		resistance: '',
 	},
 	{
-		id: 2,
 		playerTag: '8008',
 		characterName: 'player2',
 		skills: [
@@ -132,7 +130,6 @@ export default [
 		resistance: '',
 	},
 	{
-		id: 3,
 		playerTag: '9837',
 		characterName: 'player3',
 		skills: [
@@ -198,7 +195,6 @@ export default [
 		resistance: '',
 	},
 	{
-		id: 4,
 		playerTag: '2840',
 		characterName: 'player4',
 		skills: [
@@ -264,7 +260,6 @@ export default [
 		resistance: '',
 	},
 	{
-		id: 5,
 		playerTag: '8804',
 		characterName: 'player5',
 		skills: [
@@ -344,7 +339,6 @@ export default [
 		resistance: '',
 	},
 	{
-		id: 6,
 		playerTag: '2576',
 		characterName: 'player7',
 		skills: [
@@ -410,7 +404,6 @@ export default [
 		resistance: '',
 	},
 	{
-		id: 7,
 		playerTag: '8831',
 		characterName: 'test',
 		skills: [
