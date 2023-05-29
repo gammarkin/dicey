@@ -1,12 +1,5 @@
 export default [
 	{
-		name: 'Coronhada',
-		weapon_type: 'corpo a corpo',
-		critical: 'x2',
-		damageDice: '1d6',
-		damageType: 'impacto',
-	},
-	{
 		name: 'Faca',
 		weapon_type: 'corpo a corpo',
 		critical: '19',
