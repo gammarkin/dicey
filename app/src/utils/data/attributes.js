@@ -1,3 +1,3 @@
 export default [
-    'agilidade', 'força', 'intelecto', 'vigor', 'presença'
+    'Agilidade', 'Força', 'Intelecto', 'Vigor', 'Presença'
 ];
