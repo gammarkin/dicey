@@ -1,0 +1,5 @@
+.etoiles {
+	height: 100rem;
+	position: absolute;
+	z-index: -999;
+}
