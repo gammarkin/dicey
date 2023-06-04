@@ -8,8 +8,10 @@ export default function Attribute({name}) {
 
 	return (
 		<input
+			id={name}
 			onChange={({target: {value}}) => setAttribute(value)}
 			onBlur={() => setIntoLS('attributes', {name, value: Number(attribute)})}
+			value={attribute}
 		/>
 	);
 }
