@@ -4,8 +4,6 @@ import weapons from '../utils/data/weapons';
 export default function Attacks({setWeapons}) {
 	return (
 		<section>
-			<p>Ataques - Teste - Dano - Crítico/Alcance/Especial</p>
-
 			<select
 				id="attackName"
 				name="attackName"
