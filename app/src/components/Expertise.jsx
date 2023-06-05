@@ -10,6 +10,7 @@ export default function Expertise({name}) {
 		<input
 			onChange={({target: {value}}) => setExpertise(value)}
 			onBlur={() => setIntoLS('expertises', {name, value: Number(expertise)})}
+			value={expertise}
 		/>
 	);
 }
