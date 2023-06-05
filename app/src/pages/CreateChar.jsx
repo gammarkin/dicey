@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {useParams} from 'react-router-dom';
 
 import attributes from '../utils/data/attributes';
 import expertises from '../utils/data/expertises';
@@ -6,14 +7,16 @@ import expertises from '../utils/data/expertises';
 import Attacks from '../components/Attacks';
 import Attribute from '../components/Attribute';
 import Expertise from '../components/Expertise';
-import Habilities from '../components/Hability';
+
+import paginaFrontal from '../imgs/pagina_frontal_pdf.jpg';
+import '../css/style.css';
 
 export default function CreateChar() {
+	const {tag: playerTag} = useParams();
+
 	const [characterName, setCharacterName] = useState('');
-	const [playerTag, setPlayerTag] = useState('');
 	const [origin, setOrigin] = useState('');
 	const [characterClass, setCharacterClass] = useState('');
-	const [nex, setNex] = useState('');
 	const [movement, setMovement] = useState('');
 	const [pv, setPv] = useState('');
 	const [pe, setPe] = useState('');
@@ -26,8 +29,7 @@ export default function CreateChar() {
 	const [resistance, setResistance] = useState('');
 	const [weapons, setWeapons] = useState([]);
 
-	const submit = () => {
-		const habilities = JSON.parse(localStorage.getItem('habilities')) || [];
+	const handleCreateNewChar = () => {
 		const attributes = JSON.parse(localStorage.getItem('attributes')) || [];
 		const expertises = JSON.parse(localStorage.getItem('expertises')) || [];
 
@@ -36,7 +38,7 @@ export default function CreateChar() {
 			playerTag,
 			origin,
 			characterClass,
-			nex,
+			nex: '5%',
 			movement,
 			pv,
 			pe,
@@ -48,7 +50,6 @@ export default function CreateChar() {
 			dmTag,
 			resistance,
 			weapons,
-			habilities,
 			expertises,
 			attributes,
 		};
@@ -59,9 +60,9 @@ export default function CreateChar() {
 	return (
 		<main>
 			<h1>Criar Personagem</h1>
+			<img className="etoiles" src={paginaFrontal} alt="Página Frontal" />
 
 			<form>
-				<label htmlFor="characterName">Nome do Personagem</label>
 				<input
 					type="text"
 					id="characterName"
@@ -69,15 +70,8 @@ export default function CreateChar() {
 					onChange={({target: {value}}) => setCharacterName(value)}
 				/>
 
-				<label htmlFor="playerTag">Nome do Jogador</label>
-				<input
-					type="text"
-					id="playerTag"
-					value={playerTag}
-					onChange={({target: {value}}) => setPlayerTag(value)}
-				/>
+				<input type="text" id="playerTag" value={playerTag} readOnly />
 
-				<label htmlFor="origin">Origem</label>
 				<input
 					type="text"
 					id="origin"
@@ -85,7 +79,6 @@ export default function CreateChar() {
 					onChange={({target: {value}}) => setOrigin(value)}
 				/>
 
-				<label htmlFor="characterClass">Classe</label>
 				<input
 					type="text"
 					id="characterClass"
@@ -94,12 +87,7 @@ export default function CreateChar() {
 				/>
 
 				<label htmlFor="nex">Nex</label>
-				<input
-					type="text"
-					id="nex"
-					value={nex}
-					onChange={({target: {value}}) => setNex(value)}
-				/>
+				<input type="text" id="nex" value={'05'} readOnly />
 
 				<label htmlFor="movement">Movimento</label>
 				<input
@@ -182,23 +170,17 @@ export default function CreateChar() {
 				/>
 
 				<Attacks setWeapons={setWeapons} />
-				{attributes.map((attribute, i) => (
-					<>
-						{attribute}
-						<Attribute name={attribute} key={i} />
-					</>
-				))}
-				{expertises.map((expertise, i) => (
-					<>
-						{expertise}
+
+				<section className="expertises">
+					{expertises.map((expertise, i) => (
 						<Expertise name={expertise} key={i} />
-					</>
-				))}
-				{Array.from({length: 20}, (_, i) => (
-					<Habilities id={i} key={i} />
+					))}
+				</section>
+				{attributes.map((attribute, i) => (
+					<Attribute name={attribute} key={i} />
 				))}
 
-				<button onClick={submit} type="button">
+				<button onClick={handleCreateNewChar} type="button">
 					Criar
 				</button>
 			</form>

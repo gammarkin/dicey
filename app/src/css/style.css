@@ -13,6 +13,8 @@
 	font-size: 1.5rem;
 	width: 20rem;
 	height: 2rem;
+
+	border: none;
 }
 
 #playerTag {
@@ -96,5 +98,76 @@
 	height: 3rem;
 
 	text-align: center;
+	border: none;
+}
+
+.expertises {
+	right: 19rem;
+	top: 24.3rem;
+	position: absolute;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.expertises input {
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.5rem;
+	width: 2rem;
+	height: 2rem;
+
+	text-align: center;
+	border: none;
+}
+
+#attackName {
+	left: 11rem;
+	top: 89rem;
+	position: absolute;
+
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.5rem;
+	width: 30rem;
+	height: 2rem;
+
+	border: none;
+}
+
+#origin {
+	left: 19.5rem;
+	top: 49.3rem;
+	position: absolute;
+
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.5rem;
+	width: 23.5rem;
+	height: 2rem;
+
+	border: none;
+}
+
+#characterClass {
+	left: 18.8rem;
+	top: 54.1rem;
+	position: absolute;
+
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.5rem;
+	width: 24rem;
+	height: 2rem;
+
+	border: none;
+}
+
+#nex {
+	left: 16rem;
+	top: 59rem;
+	position: absolute;
+
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.5rem;
+	width: 2rem;
+	height: 2rem;
+
 	border: none;
 }
