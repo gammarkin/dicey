@@ -15,6 +15,7 @@ module.exports = async (message) => {
         const char = (await axios.get(`${ENDPOINT}/${userTag}`)).data;
         const weapons = char.weapons;
         const userWeapon = message.content.split(' ')[1];
+        const userStr = char.skills.find((stat) => stat.name === 'força').value;
 
         const weapon = weapons.find((weapon) => weapon.name.toLowerCase().includes(userWeapon.toLowerCase()));
 
@@ -23,7 +24,7 @@ module.exports = async (message) => {
         let mod = 0;
 
         if (message.content.includes('+')) {
-            mod = +message.content.split(' ')[2].replace('+', '')
+            mod = +message.content.split(' ')[2].replace('+', '');
 
             if (isNaN(mod)) return message.reply('o modificador deve ser um número!');
         }
@@ -50,10 +51,13 @@ module.exports = async (message) => {
 
 
         if (message.content.includes('*')) {
-            mod = Number(message.content.split(' ')[2].replace('*', ''));
-            total *= mod;
+            total *= Number(message.content.split(' ')[2].replace('*', ''));
 
             if (isNaN(mod)) return message.reply('o modificador deve ser um número!');
+        }
+
+        if (weapon.weapon_type === 'corpo a corpo') {
+            total += +userStr;
         }
 
         return message.channel.send({
