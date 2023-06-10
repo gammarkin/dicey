@@ -416,7 +416,7 @@ export default [
 			{value: 5, name: 'crime'},
 			{value: 0, name: 'diplomacia'},
 			{value: 0, name: 'enganação'},
-			{value: 0, name: 'fortitude'},
+			{value: 5, name: 'fortitude'},
 			{value: 0, name: 'furtividade'},
 			{value: 0, name: 'iniciativa'},
 			{value: 0, name: 'intimidação'},

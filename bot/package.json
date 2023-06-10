@@ -16,7 +16,8 @@
     "discord-api-types": "^0.37.17",
     "discord.js": "^14.6.0",
     "dotenv": "^16.0.3",
-    "random-integer": "^2.0.0"
+    "random-integer": "^2.0.0",
+    "random-number-csprng": "^1.0.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"

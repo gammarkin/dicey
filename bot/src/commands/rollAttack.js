@@ -3,7 +3,7 @@ const { ENDPOINT, BOT_USER_TAG } = process.env;
 const getUserTag = require('../helpers/getUserTag');
 
 const axios = require('axios');
-const randomInteger = require('random-integer')
+const randomInteger = require('random-number-csprng')
 
 module.exports = async (message) => {
     const [user, userTag] = getUserTag(message);
@@ -42,7 +42,7 @@ module.exports = async (message) => {
         const rolls = [];
 
         for (let i = 0; i < timesToRoll; i++) {
-            const value = randomInteger(MIN_DICE_VALUE, diceSides);
+            const value = await randomInteger(MIN_DICE_VALUE, diceSides);
 
             rolls.push({ name: `roll #${i} (${value}) `, value, inline: true });
         }

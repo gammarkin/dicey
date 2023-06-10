@@ -2,7 +2,7 @@ const skillAttrs = require('../data/skillAttributes');
 const skillNames = require('../data/skillNames');
 
 const axios = require('axios');
-const randomInteger = require('random-integer')
+const randomInteger = require('random-number-csprng')
 
 const getUserTag = require('../helpers/getUserTag');
 
@@ -49,14 +49,10 @@ module.exports = async (message) => {
     }
 
     for (let i = 0; i < timesToRoll; i++) {
-      const roll = randomInteger(MIN_DICE_VALUE, DICE_SIDES);
+      const roll = await randomInteger(MIN_DICE_VALUE, DICE_SIDES);
       const value = `${roll + attToSum + mod} (${roll})`
 
       rolls.push({ name: `roll #${i + 1}`, value, inline: true });
-
-      if (value > biggestRoll) {
-        biggestRoll = value;
-      }
     }
 
     if (NEGATIVE_ROLL_MSG) {
@@ -66,6 +62,10 @@ module.exports = async (message) => {
 
       diceSize = 'Menor'
     }
+
+    biggestRoll = rolls.reduce((max, curr) => {
+      return curr.value > max ? curr.value : max;
+    }, rolls[0].value);
 
     return message.channel.send({
       embeds: [{
