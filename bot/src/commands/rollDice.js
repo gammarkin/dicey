@@ -28,20 +28,20 @@ module.exports = async (message) => {
     const rolls = [];
 
     for (let i = 0; i < numberOfRolls; i++) {
-      const roll = await randomInteger(MIN_DICE_VALUE, sides + MIN_DICE_VALUE);
-      const value = `${roll + mod} (${roll})`
+      const roll = await randomInteger(MIN_DICE_VALUE, sides);
+      const value = `${roll}`
 
       rolls.push({ name: `roll #${i}`, value, inline: true, roll });
 
-      if (value > biggestRoll) biggestRoll = value;
+      if (roll > biggestRoll) biggestRoll = roll + mod;
     }
 
-    const total = rolls.reduce((acc, curr) => acc + curr.roll, 0);
+    const total = rolls.reduce((acc, curr) => acc + curr.roll, rolls[0].roll) + mod;
 
     return message.channel.send({
       embeds: [{
         color: 0xf54257,
-        title: `Maior dado: ${biggestRoll} | Total: ${total}`,
+        title: `Maior dado: ${biggestRoll} (${biggestRoll - mod}) | Soma total: ${total}`,
         description: `player: ${user} | dado: ${dice} | modificador: ${mod}`,
         fields: rolls,
         timestamp: new Date().toISOString(),
