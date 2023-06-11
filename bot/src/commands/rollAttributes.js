@@ -63,9 +63,9 @@ module.exports = async (message) => {
       diceSize = 'Menor'
     }
 
-    biggestRoll = rolls.reduce((max, curr) => {
-      return curr.value > max ? curr.value : max;
-    }, rolls[0].value);
+    biggestRoll = rolls.reduce((max, curr) => (
+      Number(curr.value.split(' ')[0]) > max ? curr.value : max
+    ), Number(rolls[0].value.split(' ')[0])) || 0;
 
     return message.channel.send({
       embeds: [{
