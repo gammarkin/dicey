@@ -50,27 +50,30 @@ module.exports = async (message) => {
 
     for (let i = 0; i < timesToRoll; i++) {
       const roll = await randomInteger(MIN_DICE_VALUE, DICE_SIDES);
-      const value = `${roll + attToSum + mod} (${roll})`
 
-      rolls.push({ name: `roll #${i + 1}`, value, inline: true });
+      rolls.push({ name: `roll #${i + 1}`, value: `${roll}`, inline: true, roll });
     }
 
     if (NEGATIVE_ROLL_MSG) {
       negativeRoll = rolls.reduce((min, curr) => {
-        return curr.value < min ? curr.value : min;
-      }, rolls[0].value);
+        return curr.roll < min ? curr.roll : min;
+      }, rolls[0].roll);
 
       diceSize = 'Menor'
     }
 
     biggestRoll = rolls.reduce((max, curr) => (
-      Number(curr.value.split(' ')[0]) > max ? curr.value : max
-    ), Number(rolls[0].value.split(' ')[0])) || 0;
+      curr.roll > max ? curr.roll : max
+    ), rolls[0].roll) || 0;
+
+
+    const negativeRollMessage = `${(negativeRoll + mod)} (${negativeRoll})`;
+    const positiveRollMessage = `${(biggestRoll + mod)} (${biggestRoll}) `;
 
     return message.channel.send({
       embeds: [{
         color: 0xf54257,
-        title: `${diceSize} dado: ${negativeRoll || biggestRoll} ${NEGATIVE_ROLL_MSG}`,
+        title: `${diceSize} dado: ${negativeRoll ? negativeRollMessage : positiveRollMessage} ${NEGATIVE_ROLL_MSG}`,
         description: `player: ${user} | pericia: ${skillName} | dado: ${timesToRoll}d${DICE_SIDES}`,
         fields: rolls,
         timestamp: new Date().toISOString(),
