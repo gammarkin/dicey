@@ -21,9 +21,9 @@ module.exports = async (message) => {
     if (messageLength < 2 || messageLength > 3)
       return message.reply('formatação errada! Tente !pericia (pericia)');
 
-    const userSkill = message.content.split(' ')[1].slice(0, 4).toLowerCase();
-    const skill = skillNames.find(skill => skill.code.includes(userSkill)).name;
-    const attribute = skillAttrs.find(attr => attr.name === skill).attribute;
+    const skill = message.content.split(' ')[1].slice(0, 4).toLowerCase();
+    const skillName = skillNames.find(name => name.name.includes(skill)).name;
+    const attribute = skillAttrs.find(attr => attr.name.includes(skill)).attribute;
 
     const character = (await axios.get(`${ENDPOINT}/${userTag}`)).data;
     const attToSum = character.attributes.find(charAttr => charAttr.name.includes(skill)).value;
@@ -71,11 +71,11 @@ module.exports = async (message) => {
       embeds: [{
         color: 0xf54257,
         title: `${diceSize} dado: ${negativeRoll || biggestRoll} ${NEGATIVE_ROLL_MSG}`,
-        description: `player: ${user} | pericia: ${skill} | dado: ${timesToRoll}d${DICE_SIDES}`,
+        description: `player: ${user} | pericia: ${skillName} | dado: ${timesToRoll}d${DICE_SIDES}`,
         fields: rolls,
         timestamp: new Date().toISOString(),
         footer: {
-          text: `foi adicionado ${attToSum + mod} de ${skill} ao seu dado (mod ${mod})`,
+          text: `foi adicionado ${attToSum + mod} de ${skillName} ao seu dado (mod ${mod})`,
         },
       }]
     });
