@@ -12,7 +12,7 @@ module.exports = [
     { code: 'furt', name: 'furtividade' },
     { code: 'inic', name: 'iniciativa' },
     { code: 'inti', name: 'intimidação' },
-    { code: 'intu', name: 'intuicao' },
+    { code: 'intu', name: 'intuição' },
     { code: 'inve', name: 'investigação' },
     { code: 'luta', name: 'luta' },
     { code: 'medi', name: 'medicina' },

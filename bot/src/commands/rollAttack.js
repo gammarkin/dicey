@@ -6,7 +6,8 @@ const axios = require('axios');
 const randomInteger = require('random-number-csprng')
 
 module.exports = async (message) => {
-    const [user, userTag] = getUserTag(message);
+    const [user, _] = getUserTag(message);
+    const userTag = message.author.id;
 
     if (message.content.includes('!a') && userTag !== BOT_USER_TAG) {
         if (message.content.split(' ').length < 2)
@@ -48,7 +49,6 @@ module.exports = async (message) => {
         }
 
         let total = rolls.reduce((acc, curr) => acc + curr.value, 0) + mod;
-
 
         if (message.content.includes('*')) {
             total *= Number(message.content.split(' ')[2].replace('*', ''));

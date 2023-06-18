@@ -1,6 +1,6 @@
 export default [
 	{
-		playerTag: '7973',
+		playerTag: '350366358879338496',
 		characterName: 'Diego',
 		skills: [
 			{value: 1, name: 'agilidade'},
@@ -72,7 +72,7 @@ export default [
 		resistance: '',
 	},
 	{
-		playerTag: '8008',
+		playerTag: '317038533770608643',
 		characterName: 'Alex',
 		skills: [
 			{value: 1, name: 'agilidade'},
@@ -223,7 +223,7 @@ export default [
 		resistance: '',
 	},
 	{
-		playerTag: '2840',
+		playerTag: '287238243068411904',
 		characterName: 'Thiago',
 		skills: [
 			{value: 1, name: 'agilidade'},
@@ -288,7 +288,7 @@ export default [
 		resistance: '',
 	},
 	{
-		playerTag: '8804',
+		playerTag: '315259927230676993',
 		characterName: 'Rui Armando',
 		skills: [
 			{value: 1, name: 'agilidade'},
@@ -418,7 +418,7 @@ export default [
 		resistance: '',
 	},
 	{
-		playerTag: '8831',
+		playerTag: '391540664376098817',
 		characterName: 'test',
 		skills: [
 			{value: 5, name: 'agilidade'},

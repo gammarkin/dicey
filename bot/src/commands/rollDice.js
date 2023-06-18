@@ -4,7 +4,8 @@ const randomInteger = require('random-number-csprng')
 const { BOT_USER_TAG } = process.env;
 
 module.exports = async (message) => {
-  const [user, userTag] = getUserTag(message);
+  const [user, _] = getUserTag(message);
+  const userTag = message.author.id;
 
   if (message.content.includes('!r') && userTag !== BOT_USER_TAG) {
     if (message.content.split(' ').length < 2)
@@ -36,13 +37,13 @@ module.exports = async (message) => {
       if (roll > biggestRoll) biggestRoll = roll + mod;
     }
 
-    const total = rolls.reduce((acc, curr) => acc + curr.roll, rolls[0].roll) + mod;
+    const total = rolls.reduce((acc, curr) => acc + curr.roll, 0) + mod;
 
     return message.channel.send({
       embeds: [{
         color: 0xf54257,
         title: `Maior dado: ${biggestRoll} (${biggestRoll - mod}) | Soma total: ${total}`,
-        description: `player: ${user} | dado: ${dice} | modificador: ${mod}`,
+        description: `player: ${user.split('#')[0]} | dado: ${dice} | modificador: ${mod}`,
         fields: rolls,
         timestamp: new Date().toISOString(),
         footer: {

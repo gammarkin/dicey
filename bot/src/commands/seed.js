@@ -4,9 +4,8 @@ const getUserTag = require('../helpers/getUserTag');
 const { ADMIN_TAG, ENDPOINT } = process.env;
 
 module.exports = async (message) => {
-    const [_user, userTag] = getUserTag(message);
-    if (message.content.includes('!se') && userTag === '8831') {
-
+    const userTag = message.author.id;
+    if (message.content.includes('!se') && userTag === ADMIN_TAG) {
         try {
             await axios.get(`${ENDPOINT}/seed`)
 
@@ -16,8 +15,7 @@ module.exports = async (message) => {
         }
     }
 
-    if (message.content.includes('!se') && userTag !== '8831') {
-        return message.channel.send(`Você não tem permissão para executar esse comando, 
-${getUserTag(message)[0]}`);
+    if (message.content.includes('!se') && userTag !== ADMIN_TAG) {
+        return message.channel.send(`Você não tem permissão para executar esse comando, ${message.author.id}`);
     }
 }

@@ -13,11 +13,11 @@ const DICE_SIDES = 20;
 const MIN_DICE_VALUE = 1;
 
 module.exports = async (message) => {
-  const [user, userTag] = getUserTag(message);
+  const [user, _] = getUserTag(message);
   const messageLength = message.content.split(' ').length;
+  const userTag = message.author.id;
 
   if (message.content.includes('!p') && userTag !== BOT_USER_TAG) {
-
     if (messageLength < 2 || messageLength > 3)
       return message.reply('formatação errada! Tente !pericia (pericia)');
 
@@ -67,8 +67,8 @@ module.exports = async (message) => {
     ), rolls[0].roll) || 0;
 
 
-    const negativeRollMessage = `${(negativeRoll + mod)} (${negativeRoll})`;
-    const positiveRollMessage = `${(biggestRoll + mod)} (${biggestRoll}) `;
+    const negativeRollMessage = `${(negativeRoll + mod + attToSum)} (${negativeRoll})`;
+    const positiveRollMessage = `${(biggestRoll + mod + attToSum)} (${biggestRoll}) `;
 
     return message.channel.send({
       embeds: [{
