@@ -21,6 +21,10 @@ module.exports = async (message) => {
     if (messageLength < 2 || messageLength > 3)
       return message.reply('formatação errada! Tente !pericia (pericia)');
 
+    if (!skillNames.find(name => name.name.includes(message.content.split(' ')[1].slice(0, 4).toLowerCase()))) {
+      return message.reply('pericia não encontrada! Tente !pericia (pericia)');
+    }
+
     const skill = message.content.split(' ')[1].slice(0, 4).toLowerCase();
     const skillName = skillNames.find(name => name.name.includes(skill)).name;
     const attribute = skillAttrs.find(attr => attr.name.includes(skill)).attribute;
